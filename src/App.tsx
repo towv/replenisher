@@ -1,5 +1,5 @@
 import "./App.css";
-import input from "./util/input.json";
+import standardInput from "./util/input.json";
 import React, { useEffect, useState } from 'react'
 
 
@@ -41,6 +41,8 @@ class Order {
 function App() {
 
   const [order, setOrder] = useState<Order[]>()
+
+  const [input, setInput] = useState<string>(JSON.stringify(standardInput))
   
   type Product = {
     code: string;
@@ -61,15 +63,6 @@ function App() {
   type BatchQuantity = {
     productCode: string;
     quantity: number;
-  };
-
-  type Order = {
-    productCode: string;
-    batchSizeCode: string;
-    productName: string;
-    batchSize: number;
-    batchQuantity: number;
-    pricePerUnit: number;
   };
 
   function orderProducer(
@@ -115,7 +108,10 @@ function App() {
     return orders;
   }
   const handleInputData = ( maxBatchSize: boolean | void ) => {
-    const parsedInputData = JSON.parse(JSON.stringify(input));
+    if (!input) {
+      return;
+    }
+    const parsedInputData = JSON.parse(input);
 
     const inputProducts = parsedInputData.product;
     const inputBatchSizes = parsedInputData.batchSize;
@@ -149,6 +145,23 @@ function App() {
   }
 
   const usePredefinedBatchSize = () => {
+    handleInputData();
+  }
+
+  const onChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    e.preventDefault()
+
+    setInput(e.currentTarget.value)
+  }
+
+  const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+
+    console.log(input);
+    if (!input) {
+      return;
+    }
+    
     handleInputData();
   }
 
@@ -203,6 +216,15 @@ function App() {
 
       <br/>
       {renderTable()}
+
+      <br/>
+      <div>
+        <form>
+          <label style={{ marginTop: 10, width: '50%', display: "flex", alignItems: 'center' }}>Input in JSON format</label>
+          <textarea style={{ marginTop: 10 }} rows={20} cols={100} value={input} onChange={onChange} />
+          <input type="submit" onClick={onSubmit} value="Calculate orders" style={{ marginTop: 10 }} />
+        </form>
+      </div>
     </div>
   );
 }
