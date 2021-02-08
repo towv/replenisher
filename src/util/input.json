@@ -1,0 +1,109 @@
+{
+    "product": [
+            {
+                "code": "P1",
+                "name": "Milk",
+                "pricePerUnit": 1.99
+            },
+            {
+                "code": "P2",
+                "name": "Sour Milk",
+                "pricePerUnit": 2.05
+            },
+            {
+                "code": "P3",
+                "name": "Cream",
+                "pricePerUnit": 3.59
+            },
+            {
+                "code": "P4",
+                "name": "Yoghurt",
+                "pricePerUnit": 4.99
+            },
+            {
+                "code": "P5",
+                "name": "Buttermilk",
+                "pricePerUnit": 3.1
+            }
+    ],
+    "batchSize": [
+        {
+            "code": "BS1",
+            "size": 20
+        },
+        {
+            "code": "BS2",
+            "size": 30
+        },
+        {
+            "code": "BS3",
+            "size": 40
+        },
+        {
+            "code": "BS4",
+            "size": 50
+        },
+        {
+            "code": "BS5",
+            "size": 100
+        },
+        {
+            "code": "BS6",
+            "size": 20
+        },
+        {
+            "code": "BS7",
+            "size": 50
+        }
+
+    ],
+    "productBatchSize": [
+        {
+            "productCode": "P1",
+            "batchSizeCode": "BS6"
+        },
+        {
+            "productCode": "P2",
+            "batchSizeCode": "BS1"
+        },
+        {
+            "productCode": "P2",
+            "batchSizeCode": "BS2"
+        },
+        {
+            "productCode": "P2",
+            "batchSizeCode": "BS3"
+        },
+        {
+            "productCode": "P3",
+            "batchSizeCode": "BS4"
+        },
+        {
+            "productCode": "P3",
+            "batchSizeCode": "BS5"
+        },
+        {
+            "productCode": "P5",
+            "batchSizeCode": "BS7"
+        }
+    ],
+    "numberOfBatches": [
+        {
+            "productCode": "P1",
+            "quantity": 20
+        },
+        {
+            "productCode": "P2",
+            "quantity": 500
+        },
+        {
+            "productCode": "P3",
+            "quantity": 40
+        },
+        {
+            "productCode": "P4",
+            "quantity": 234
+        }
+    ],
+    "useMaximumBatchSize": true
+}
